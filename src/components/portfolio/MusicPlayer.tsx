@@ -14,14 +14,32 @@ export const MusicPlayer = () => {
     audio.volume = 0.3; // mild volume
     audioRef.current = audio;
 
-    // Optional: try to auto-play if browser allows
-    // audio.play().catch(() => {
-    //   // Autoplay was prevented
-    // });
+    const tryPlay = () => {
+      if (audioRef.current) {
+        audioRef.current.play().then(() => {
+          setIsPlaying(true);
+          // Remove event listeners once it successfully starts playing
+          document.removeEventListener('click', tryPlay);
+          document.removeEventListener('keydown', tryPlay);
+        }).catch(() => {
+          // Autoplay was prevented, will wait for user interaction
+          console.log("Autoplay blocked, waiting for user interaction");
+        });
+      }
+    };
+
+    // Attempt to auto-play immediately
+    tryPlay();
+
+    // If blocked, try to play on the first user interaction
+    document.addEventListener('click', tryPlay);
+    document.addEventListener('keydown', tryPlay);
 
     return () => {
       audio.pause();
       audio.src = "";
+      document.removeEventListener('click', tryPlay);
+      document.removeEventListener('keydown', tryPlay);
     };
   }, []);
 
