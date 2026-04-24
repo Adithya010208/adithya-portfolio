@@ -162,7 +162,7 @@ export const Contact = () => {
                <a href="#about" className="text-sm font-semibold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">About</a>
                <a href="#skills" className="text-sm font-semibold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Skills</a>
                <a href="#projects" className="text-sm font-semibold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Projects</a>
-               <a href="#home" className="text-sm font-semibold uppercase tracking-widest text-white hover:text-primary transition-colors opacity-80">↑ Back to Top</a>
+               <a href="#home" className="text-sm font-semibold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">↑ Back to Top</a>
             </div>
 
             <p className="font-mono-ui text-xs uppercase tracking-[0.2em] text-muted-foreground">
