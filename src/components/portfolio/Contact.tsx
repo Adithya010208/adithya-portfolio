@@ -152,10 +152,49 @@ export const Contact = () => {
         {/* Footer block */}
         <div className="relative mt-24 border-t border-border/50 pt-16 pb-12">
           <div className="flex flex-col items-center justify-center text-center">
-            <h3 className="font-display text-7xl font-extrabold leading-none md:text-9xl mb-8">
-              <span className="text-stroke">ADITHYA </span>
-              <span className="text-gradient">K</span>
-            </h3>
+            <motion.h3
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                visible: { transition: { staggerChildren: 0.15 } },
+                hidden: {}
+              }}
+              className="font-display text-7xl font-extrabold leading-none md:text-9xl mb-8 flex justify-center items-center flex-wrap"
+            >
+              <span className="text-stroke flex">
+                {"ADITHYA".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, display: "none" },
+                      visible: { opacity: 1, display: "inline-block" }
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+              <span className="ml-3 md:ml-6 text-gradient flex">
+                {"K".split("").map((char, i) => (
+                  <motion.span
+                    key={i}
+                    variants={{
+                      hidden: { opacity: 0, display: "none" },
+                      visible: { opacity: 1, display: "inline-block" }
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 1, 0] }}
+                transition={{ repeat: Infinity, duration: 1 }}
+                className="ml-2 inline-block h-[0.8em] w-[0.1em] bg-primary align-middle"
+              />
+            </motion.h3>
             
             <div className="flex flex-wrap justify-center items-center gap-6 mb-10">
                <a href="#home" className="text-sm font-semibold uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">Home</a>
