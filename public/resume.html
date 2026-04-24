@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adithya Kathiresan - Resume</title>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background: #f4f4f5;
+    }
+    .resume-container {
+      background: white;
+      padding: 50px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    header {
+      border-bottom: 2px solid #e4e4e7;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    h1 { margin: 0; font-size: 2.5rem; color: #18181b; }
+    .contact-info { margin-top: 10px; color: #71717a; display: flex; gap: 15px; font-size: 0.95rem; }
+    .contact-info a { color: #2563eb; text-decoration: none; }
+    .contact-info a:hover { text-decoration: underline; }
+    h2 { font-size: 1.3rem; color: #18181b; margin-top: 35px; border-bottom: 1px solid #e4e4e7; padding-bottom: 5px; }
+    .job, .project { margin-bottom: 20px; }
+    .job-title, .project-title { font-weight: 700; color: #18181b; }
+    .job-meta, .project-meta { font-size: 0.9rem; color: #71717a; margin-bottom: 8px; }
+    ul { padding-left: 20px; margin-top: 5px; }
+    li { margin-bottom: 8px; }
+    .print-btn {
+      position: absolute; top: 30px; right: 30px;
+      background: #18181b; color: white; padding: 10px 20px; border: none; border-radius: 6px;
+      cursor: pointer; font-weight: bold; font-family: inherit;
+    }
+    .print-btn:hover { background: #3f3f46; }
+    @media print {
+      body { background: white; padding: 0; }
+      .resume-container { box-shadow: none; padding: 0; }
+      .print-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+  <div class="resume-container">
+    <header>
+      <h1>ADITHYA KATHIRESAN (ADHI)</h1>
+      <div class="contact-info">
+        <span>📍 Tiruvallur, Tamil Nadu</span>
+        <span>✉️ <a href="mailto:adithyakathiresan2008@gmail.com">adithyakathiresan2008@gmail.com</a></span>
+        <span>🔗 <a href="https://www.linkedin.com/in/adithya0102/">LinkedIn</a></span>
+        <span>💻 <a href="https://github.com/Adithya010208">GitHub</a></span>
+      </div>
+    </header>
+
+    <section>
+      <h2>SUMMARY</h2>
+      <p>A dedicated Computer Science & Design Engineering student crafting bold, futuristic web experiences. Highly skilled in modern web development frameworks and passionate about AI integration, responsive design, and robust frontend architectures.</p>
+    </section>
+
+    <section>
+      <h2>EDUCATION</h2>
+      <div class="job">
+        <div class="job-title">B.Tech in Computer Science & Design Engineering</div>
+        <div class="job-meta">RMK Engineering College</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>TECHNICAL SKILLS</h2>
+      <ul>
+        <li><strong>Languages:</strong> Java, C, C++, TypeScript, HTML, CSS</li>
+        <li><strong>Frontend & UI:</strong> React, Vite, Next.js, Framer Motion, TailwindCSS</li>
+        <li><strong>Tools & Platforms:</strong> Git, GitHub, Node.js, Vercel</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>PROJECTS</h2>
+      <div class="project">
+        <div class="project-title">ClearNote AI</div>
+        <ul>
+          <li>Developed an intelligent note-taking application using modern web technologies to streamline academic study sessions through AI summarization.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-title">RMK Academic Intelligence Portal</div>
+        <ul>
+          <li>Architected a comprehensive dashboard for tracking student metrics, predictive analytics, and academic intelligence insights.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-title">SecurePay</div>
+        <ul>
+          <li>Designed and built a digital payment application equipped with a robust fraud detection dashboard involving advanced attack simulation scenarios.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-title">EcoPulse AI</div>
+        <ul>
+          <li>Created an AI-driven tool for environmental analytics and forecasting.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>AWARDS & CERTIFICATIONS</h2>
+      <ul>
+        <li><strong>1st Prize</strong>, Pitch-a-thon</li>
+        <li>Participant, <strong>AMOR.MORTIS CTF</strong></li>
+        <li>Internship, <strong>CodeAlpha (C++)</strong></li>
+        <li>Awardee, <strong>Ramanujan Math Competition</strong></li>
+      </ul>
+    </section>
+  </div>
+
+</body>
+</html>
