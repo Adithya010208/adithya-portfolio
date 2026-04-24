@@ -7,11 +7,13 @@ import { Certificates } from "@/components/portfolio/Certificates";
 import { Experience } from "@/components/portfolio/Experience";
 import { Testimonials } from "@/components/portfolio/Testimonials";
 import { Contact } from "@/components/portfolio/Contact";
+import { MusicPlayer } from "@/components/portfolio/MusicPlayer";
 
 const Index = () => {
   return (
     <main className="relative">
       <Navbar />
+      <MusicPlayer />
       <Hero />
       <About />
       <Skills />
