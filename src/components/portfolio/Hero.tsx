@@ -202,36 +202,10 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="font-display text-5xl font-extrabold leading-[0.9] tracking-tight md:text-7xl lg:text-8xl flex flex-wrap items-center justify-center lg:justify-start"
+            className="font-display text-5xl font-extrabold leading-[0.9] tracking-tight md:text-7xl lg:text-8xl"
           >
-            <span className="text-gradient mr-3 lg:mr-4">Hi, I'm </span>
-            <motion.span
-              initial="hidden"
-              animate="visible"
-              variants={{
-                visible: { transition: { staggerChildren: 0.15, delayChildren: 1.2 } },
-                hidden: {}
-              }}
-              className="text-gradient-primary inline-flex"
-            >
-              {"ADHI".split("").map((char, i) => (
-                <motion.span
-                  key={i}
-                  variants={{
-                    hidden: { opacity: 0, display: "none" },
-                    visible: { opacity: 1, display: "inline-block" }
-                  }}
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 1, 1, 0] }}
-              transition={{ repeat: Infinity, duration: 1 }}
-              className="ml-1 inline-block h-[0.8em] w-[0.1em] bg-primary align-middle"
-            />
+            <span className="text-gradient">Hi, I'm </span>
+            <span className="text-gradient-primary">ADHI</span>
             <span className="ml-2 inline-block">✌️</span>
           </motion.h1>
           <motion.p
