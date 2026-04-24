@@ -19,6 +19,12 @@ export const Hero = () => {
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
 
+  // Parallax Translations
+  const avatarX = useTransform(mouseXSpring, [-0.5, 0.5], [-28, 28]);
+  const avatarY = useTransform(mouseYSpring, [-0.5, 0.5], [-28, 28]);
+  const bgX = useTransform(mouseXSpring, [-0.5, 0.5], [15, -15]);
+  const bgY = useTransform(mouseYSpring, [-0.5, 0.5], [15, -15]);
+
   useEffect(() => {
     const handleWindowMouseMove = (e: MouseEvent) => {
       const width = window.innerWidth;
@@ -128,24 +134,32 @@ export const Hero = () => {
             <motion.div 
               className="absolute inset-0 -z-10 animate-pulse-glow rounded-full bg-gradient-cta opacity-40 blur-3xl transition-opacity duration-500 group-hover:opacity-70" 
               style={{
+                x: bgX,
+                y: bgY,
                 transform: "translateZ(-50px)",
               }}
             />
-            <div
-              className="absolute -z-10 animate-spin-slow rounded-full border border-dashed border-primary/30 group-hover:border-primary/60 transition-colors duration-500"
-              style={{ width: "110%", height: "110%", top: "-5%", left: "-5%", transform: "translateZ(-20px)" }}
-            />
-            {/* Idle float + subtle head sway */}
             <motion.div
-              animate={
-                idle
-                  ? { y: [0, -12, 0], rotate: [-1.2, 1.2, -1.2] }
-                  : { y: 0, rotate: 0 }
-              }
-              transition={{ duration: 5, repeat: idle ? Infinity : 0, ease: "easeInOut" }}
-              className="relative"
-              style={{ transform: "translateZ(40px)" }}
-            >
+              className="absolute -z-10 animate-spin-slow rounded-full border border-dashed border-primary/30 group-hover:border-primary/60 transition-colors duration-500"
+              style={{ 
+                x: bgX, 
+                y: bgY, 
+                width: "110%", height: "110%", top: "-5%", left: "-5%", 
+                transform: "translateZ(-20px)" 
+              }}
+            />
+            {/* Idle float + subtle head sway with parallax wrapper */}
+            <motion.div style={{ x: avatarX, y: avatarY }}>
+              <motion.div
+                animate={
+                  idle
+                    ? { y: [0, -12, 0], rotate: [-1.2, 1.2, -1.2] }
+                    : { y: 0, rotate: 0 }
+                }
+                transition={{ duration: 5, repeat: idle ? Infinity : 0, ease: "easeInOut" }}
+                className="relative"
+                style={{ transform: "translateZ(40px)" }}
+              >
               <AnimatePresence mode="wait">
                 <motion.img
                   src={avatarImg}
@@ -159,6 +173,7 @@ export const Hero = () => {
                   className="h-auto w-[280px] drop-shadow-[0_30px_60px_hsl(280_90%_65%/0.4)] sm:w-[360px] md:w-[440px] group-hover:drop-shadow-[0_40px_80px_hsl(280_90%_65%/0.6)] transition-all duration-500"
                 />
               </AnimatePresence>
+            </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>

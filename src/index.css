@@ -65,7 +65,59 @@
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 240 6% 16%;
     --sidebar-ring: 280 90% 65%;
+    --sidebar-ring: 280 90% 65%;
+
+    --glass-bg: hsl(240 10% 8% / 0.55);
+    --glass-border: hsl(0 0% 100% / 0.07);
+    --glass-strong-bg: hsl(240 10% 10% / 0.7);
+    --glass-strong-border: hsl(0 0% 100% / 0.1);
   }
+
+  .light {
+    --background: 0 0% 98%;
+    --foreground: 240 10% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 4%;
+
+    --primary: 280 80% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --primary-glow: 195 90% 45%;
+    --accent-pink: 320 85% 55%;
+    --accent-cyan: 190 90% 40%;
+    --accent-violet: 265 80% 55%;
+
+    --secondary: 240 6% 94%;
+    --secondary-foreground: 240 10% 4%;
+
+    --muted: 240 6% 94%;
+    --muted-foreground: 240 5% 45%;
+
+    --accent: 240 6% 92%;
+    --accent-foreground: 240 10% 4%;
+
+    --border: 240 6% 85%;
+    --input: 240 6% 85%;
+    --ring: 280 80% 55%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(280 80% 55%), hsl(195 90% 45%));
+    --gradient-cta: linear-gradient(120deg, hsl(320 85% 55%), hsl(265 80% 55%) 50%, hsl(195 90% 45%));
+    --gradient-text: linear-gradient(180deg, hsl(240 10% 10%), hsl(240 5% 40%));
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(280 80% 55% / 0.15), transparent 70%);
+    --gradient-mesh: radial-gradient(at 20% 10%, hsl(280 80% 55% / 0.08) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(195 90% 45% / 0.08) 0px, transparent 50%),
+                     radial-gradient(at 0% 80%, hsl(320 85% 55% / 0.08) 0px, transparent 50%);
+
+    --glass-bg: hsl(0 0% 100% / 0.7);
+    --glass-border: hsl(240 10% 0% / 0.1);
+    --glass-strong-bg: hsl(0 0% 100% / 0.85);
+    --glass-strong-border: hsl(240 10% 0% / 0.15);
+  }
+
 }
 
 @layer base {
@@ -82,6 +134,26 @@
     background-attachment: fixed;
     overflow-x: hidden;
   }
+  
+  /* View Transition API custom animation */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+  ::view-transition-old(root) {
+    z-index: 1;
+  }
+  ::view-transition-new(root) {
+    z-index: 9999;
+  }
+  .dark::view-transition-old(root) {
+    z-index: 9999;
+  }
+  .dark::view-transition-new(root) {
+    z-index: 1;
+  }
+
   ::selection {
     background: hsl(var(--primary) / 0.4);
     color: hsl(var(--foreground));
@@ -97,15 +169,15 @@
     font-family: 'JetBrains Mono', monospace;
   }
   .glass {
-    background: hsl(240 10% 8% / 0.55);
+    background: var(--glass-bg);
     backdrop-filter: blur(20px) saturate(140%);
     -webkit-backdrop-filter: blur(20px) saturate(140%);
-    border: 1px solid hsl(0 0% 100% / 0.07);
+    border: 1px solid var(--glass-border);
   }
   .glass-strong {
-    background: hsl(240 10% 10% / 0.7);
+    background: var(--glass-strong-bg);
     backdrop-filter: blur(24px) saturate(160%);
-    border: 1px solid hsl(0 0% 100% / 0.1);
+    border: 1px solid var(--glass-strong-border);
   }
   .text-gradient {
     background: var(--gradient-text);

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 
 const links = [
   { id: "about", label: "About" },
@@ -12,11 +13,49 @@ const links = [
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [isDark, setIsDark] = useState(true);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const toggleTheme = (e: React.MouseEvent) => {
+    const x = e.clientX;
+    const y = e.clientY;
+
+    if (!document.startViewTransition) {
+      document.documentElement.classList.toggle("light");
+      setIsDark((prev) => !prev);
+      return;
+    }
+
+    const t = document.startViewTransition(() => {
+      document.documentElement.classList.toggle("light");
+      setIsDark((prev) => !prev);
+    });
+
+    t.ready.then(() => {
+      const radius = Math.hypot(
+        Math.max(x, innerWidth - x),
+        Math.max(y, innerHeight - y)
+      );
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${radius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 500,
+          easing: "ease-in-out",
+          pseudoElement: "::view-transition-new(root)",
+        }
+      );
+    });
+  };
 
   return (
     <motion.header
@@ -47,9 +86,18 @@ export const Navbar = () => {
             </a>
           ))}
         </div>
+        
+        <button
+          onClick={toggleTheme}
+          className="ml-2 flex h-9 w-9 items-center justify-center rounded-full bg-secondary text-foreground transition-transform hover:scale-105 hover:bg-muted"
+          aria-label="Toggle Theme"
+        >
+          {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+        </button>
+
         <a
           href="#contact"
-          className="ml-1 rounded-full bg-foreground px-5 py-2 text-sm font-medium text-background transition-transform hover:scale-105"
+          className="ml-2 rounded-full bg-foreground px-5 py-2 text-sm font-medium text-background transition-transform hover:scale-105"
         >
           Hire Me
         </a>
